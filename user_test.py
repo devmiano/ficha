@@ -13,8 +13,8 @@ class TestUser(unittest.TestCase):
   
   '''method to test that the object is initialized'''
   def test_init(self):
-    self.assertEqual(self.new_user.f_name, 'Annabel')
-    self.assertEqual(self.new_user.l_name, 'Karish')
+    self.assertEqual(self.new_user.fname, 'Annabel')
+    self.assertEqual(self.new_user.lname, 'Karish')
     self.assertEqual(self.new_user.username, 'annabelkarish')
     self.assertEqual(self.new_user.email, 'annabel@karish.com')
     self.assertEqual(self.new_user.password, 'Karish@Annabel2022')
@@ -35,4 +35,12 @@ class TestUser(unittest.TestCase):
     test_user = User('First', 'User', 'first@user.com', 'firstuser', 'first@user2022')
     test_user.save_user()
     self.assertEqual(len(User.users), 2)
+    
+  def test_delete_user(self):
+    self.new_user.delete_user()
+    self.assertEqual(len(User.users), 0)
+    
+  '''method to test that all users can be displayed''' 
+  def test_display_all_users(self):
+    self.assertEqual(User.display_all_users(), User.users)
     

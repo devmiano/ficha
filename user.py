@@ -30,3 +30,9 @@ class User:
     for user in cls.users:
       if user.username == username and user.password == password:
         return True
+      
+  
+  '''class method to retrieve a user in the users array for display'''
+  @classmethod
+  def display_all_users(cls):
+    return cls.users
