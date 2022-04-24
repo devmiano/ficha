@@ -2,37 +2,43 @@ class User:
   '''class that generates a new user'''
   pass
 
-  '''initialize new users array'''
-  users = []
   
-  '''an init method that defines properties for a new user object'''
+  users = []
+  '''initialize new users array'''
+  
   def __init__(self, fname, lname, username, email, password):
-    '''arguments for the user object'''
+    '''an init method that defines properties for a new user object'''
+    
     
     self.fname = fname
     self.lname = lname
     self.username = username
     self.email = email
     self.password = password
+    '''arguments for the user object'''
     
-  '''method to save users in the users array'''
+  
   def save_user(self):
+    '''method to save users in the users array'''
     User.users.append(self)
     
-  '''method to delete users in the users array'''
+  
   def delete_user(self):
+    '''method to delete users in the users array'''
     User.users.remove(self)
     
   
-  '''class method to retrieve a user in the users array for sign in'''
+  
   @classmethod
   def get_user(cls, username, password):
+    '''class method to retrieve a user in the users array for sign in'''
     for user in cls.users:
       if user.username == username and user.password == password:
         return True
       
   
-  '''class method to retrieve a user in the users array for display'''
+  
   @classmethod
   def display_all_users(cls):
+    '''class method to retrieve a user in the users array for display'''
     return cls.users
