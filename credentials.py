@@ -5,7 +5,7 @@ import random
 class Credentials:
   
   
-  '''initialize new credentials array'''
+  '''initialize the credentials array'''
   credentials = []
   
   
@@ -17,5 +17,12 @@ class Credentials:
     self.username = username
     self.email = email
     self.password = password
-    
+
+  '''method to save credentials in the credentials array'''      
+  def save_credentials(self):
+    Credentials.credentials.append(self)
   
+  
+  '''method to delete credentials in the credentials array'''      
+  def delete_credentials(self):
+    Credentials.credentials.remove(self)
