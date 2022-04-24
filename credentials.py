@@ -1,5 +1,6 @@
 from user import User
-import random
+
+
 
 '''class that creates new credentials for a user'''
 class Credentials:
@@ -26,3 +27,13 @@ class Credentials:
   '''method to delete credentials in the credentials array'''      
   def delete_credentials(self):
     Credentials.credentials.remove(self)
+  
+  
+  '''class method to display all credentials in the vault'''
+  @classmethod  
+  def vault(cls, username, password):
+    vault_admin = User.get_user(username, password)
+    
+    if vault_admin == username:
+      return cls.credentials
+    
