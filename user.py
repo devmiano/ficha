@@ -1,5 +1,5 @@
 class User:
-  '''a class that generates a new user'''
+  '''class that generates a new user'''
   pass
 
   '''initialize new users array'''
@@ -15,16 +15,16 @@ class User:
     self.email = email
     self.password = password
     
-  '''save users in the users array'''
+  '''method to save users in the users array'''
   def save_user(self):
     User.users.append(self)
     
-  '''delete users in the users array'''
+  '''method to delete users in the users array'''
   def delete_user(self):
     User.users.remove(self)
     
   
-  '''a method to retrieve a user in the users array for sign in'''
+  '''class method to retrieve a user in the users array for sign in'''
   @classmethod
   def get_user(cls, username, password):
     for user in cls.users:
