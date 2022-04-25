@@ -134,7 +134,21 @@ def main():
             
             print(f'Successfully created new credentials \n Site name: {site}\n Username: {username} \n Email: {email} \n Password: {password}')
             
+          elif short_code == 'd':
+            print('\n')
+            if Credentials.vault():
+              print('Credentials')
+              for credential in Credentials.vault():
+                print(f'\nSite name: {credential.site}')
+                print(f'Site username: {credential.username}')
+                print(f'Site email: {credential.email}')
+                print(f'Site password: {credential.password}')
+                
+            else:
+              print(f'\nNo credentials found. Please try creating new credentials first')
+                
           
+            
       
     elif short_code == 'x':
       print('Thank you for choosing Ficha Password Manager! See you later!')
