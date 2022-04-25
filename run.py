@@ -147,7 +147,17 @@ def main():
             else:
               print(f'\nNo credentials found. Please try creating new credentials first')
                 
-          
+          elif short_code == 'e':
+            print('Are you sure you want to proceed? \nEnter "y" to logout \nEnter "n" to cancel')
+            short_code = input("Enter option: ").lower()
+            
+            if short_code == 'y':
+                print('Logged out successfully')
+                break
+            elif short_code == 'n':
+              print('Process cancelled')
+            else:
+              print('No option specified')
             
       
     elif short_code == 'x':
