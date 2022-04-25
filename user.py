@@ -42,3 +42,5 @@ class User:
   def display_all_users(cls):
     '''class method to retrieve a user in the users array for display'''
     return cls.users
+
+

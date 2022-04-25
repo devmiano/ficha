@@ -8,11 +8,10 @@ class TestUser(unittest.TestCase):
   
   
   def setUp(self):
-    '''method to run before the test case is executed'''
-    
+    '''method to test the creation of a new user object'''
     self.new_user = User('Annabel', 'Karish', 'annabelkarish', 'annabel@karish.com', 'Karish@Annabel2022')
   
-  
+    
   
   def test_init(self):
     self.assertEqual(self.new_user.fname, 'Annabel')
