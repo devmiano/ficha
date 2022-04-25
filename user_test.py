@@ -51,3 +51,5 @@ class TestUser(unittest.TestCase):
     '''method to test that all users can be displayed''' 
     self.assertEqual(User.display_all_users(), User.users)
     
+if __name__ == '__main__':
+  unittest.main()

@@ -30,3 +30,7 @@ class TestCredentials(unittest.TestCase):
     '''method to test that the credentials are deleted'''
     self.new_credentials.delete_credentials()
     self.assertEqual(len(Credentials.credentials), 0)
+    
+if __name__ == '__main__':
+  unittest.main()
+  
