@@ -21,4 +21,12 @@ class TestCredentials(unittest.TestCase):
     '''method to test run after the test case is executed'''
     Credentials.credentials = []
     
-  
+  def test_save_credentials(self):
+    '''method to test that the credentials are saved'''
+    self.new_credentials.save_credentials()
+    self.assertEqual(len(Credentials.credentials), 1)
+    
+  def test_delete_credentials(self):
+    '''method to test that the credentials are deleted'''
+    self.new_credentials.delete_credentials()
+    self.assertEqual(len(Credentials.credentials), 0)
