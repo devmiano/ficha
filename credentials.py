@@ -1,6 +1,5 @@
 from user import User
-import random
-import maskpass
+
 
 
 class Credentials:
