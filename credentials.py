@@ -31,13 +31,9 @@ class Credentials:
   
   
   @classmethod  
-  def vault(cls, username, password):
+  def vault(cls):
     '''class method to display all credentials in the vault'''
     
-    vault_admin = User.get_user(username, password)
-    '''variable that gets the username from the user'''
-    
-    if vault_admin == username:
-      return cls.credentials
+    return cls.credentials
   
       

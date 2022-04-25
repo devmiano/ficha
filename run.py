@@ -43,7 +43,7 @@ def display_vault():
 def createpwd(length, char=string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation):
   '''function that hides and generates a password'''
   
-  password = ''.join(random.choice(char) for _ in range(length))
+  password = ''.join(random.choice(char) for _ in range(int(length)))
   
   return password
 
@@ -68,19 +68,73 @@ def main():
       email = input().strip()
       
       print('Create your master password:')
-      password = maskpass.askpass(mask='*')
+      password = maskpass.askpass(prompt="Password:", mask='*')
       
       save_user(create_user(fname, lname, username, email, password))
       
       print('\n')
-      
-      print(f'Welcome {fname} {lname}')
-      
-      print('\n')
-      
+
       print(f'Username: {username} Email: {email} Password: {password}')
       
-      print('App Menu: \n c - Create new Credentials \n d - Log out of Ficha account')
+      print('\nPlease now log in to start generating and saving your passwords')
+      
+    elif short_code == 'b':
+      print('\n Log in \n')
+      print('Enter username:')
+      username = input().strip()
+      print('Enter your master password:')
+      password = maskpass.askpass(prompt="Password:", mask='*')
+      
+      username = User.get_user(username, password)
+      
+      if username == username:
+        print('\nLogin successful!')
+        
+        print(f'Welcome {fname} {lname}')
+        
+        while True:
+          print('\n')
+          
+          print('App Menu: \n c - Create new Credentials \n d - View your Vault \n e - Log out \n')
+          
+          short_code = input("Enter option: ").lower()
+          
+          if short_code == 'c':
+            print('\n')
+        
+            print('Create new Credentials')
+            print('Enter site name:')
+            site = input().strip()
+            print('Enter site username:')
+            username = input().strip()
+            print('Enter site email:')
+            email = input().strip()
+            
+            while True:
+              print('\n')
+        
+              print('Enter "y" to create new Credentials with your password \nEnter "n" to create new Credentials with a generated password.')
+              short_code = input("Enter option: ").lower()
+              
+              if short_code == 'y':
+                print('Enter your site password:')
+                password = maskpass.askpass(prompt="Password:", mask='*')
+                break
+              elif short_code == 'n':
+                print('Enter a password length:')
+                length = input().strip()
+                password = createpwd(length)
+                break
+              else:
+                print('No option specified')
+                break
+            
+            save_credentials(new_credentials(site, username, email, password))
+            print('\n')
+            
+            print(f'Successfully created new credentials \n Site name: {site}\n Username: {username} \n Email: {email} \n Password: {password}')
+            
+          
       
     elif short_code == 'x':
       print('Thank you for choosing Ficha Password Manager! See you later!')
