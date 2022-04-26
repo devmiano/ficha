@@ -22,10 +22,10 @@ def remove_user(user):
   
   User.remove_new_user(user)
   
-def new_credentials(site, username, email, password):
+def new_credentials(site, site_username, site_email, site_password):
   '''function that creates new credentials from the credentials class'''
   
-  new_credentials = Credentials(site, username, email, password)
+  new_credentials = Credentials(site, site_username, site_email, site_password)
   return new_credentials
 
 def save_credentials(credentials):
@@ -36,6 +36,7 @@ def save_credentials(credentials):
 
 def display_vault():
   '''function that displays all credentials from the vault method'''
+  
   return Credentials.vault()
 
 
@@ -73,7 +74,7 @@ def main():
       
       print('\n')
 
-      print(f'Username: {username} Email: {email} Password: {password}')
+      print(f'Username: {username} \nEmail: {email} \nPassword: {password}')
       
       print('\nPlease now log in to start generating and saving your passwords')
       
@@ -105,9 +106,9 @@ def main():
             print('Enter site name:')
             site = input().strip()
             print('Enter site username:')
-            username = input().strip()
+            site_username = input().strip()
             print('Enter site email:')
-            email = input().strip()
+            site_email = input().strip()
             
             while True:
               print('\n')
@@ -117,31 +118,31 @@ def main():
               
               if short_code == 'y':
                 print('Enter your site password:')
-                password = maskpass.askpass(prompt="Password:", mask='*')
+                site_password = maskpass.askpass(prompt="Password:", mask='*')
                 break
               elif short_code == 'n':
                 print('Enter a password length:')
                 length = input().strip()
-                password = createpwd(length)
+                site_password = createpwd(length)
                 break
               else:
                 print('No option specified')
                 break
             
-            save_credentials(new_credentials(site, username, email, password))
+            save_credentials(new_credentials(site, site_username, site_email, site_password))
             print('\n')
             
-            print(f'Successfully created new credentials \n Site name: {site}\n Username: {username} \n Email: {email} \n Password: {password}')
+            print(f'Successfully created new credentials for {username} \n Site name: {site}\n Username: {site_username} \n Email: {site_email} \n Password: {site_password}')
             
           elif short_code == 'd':
-            print(f'Vault for {username}')
-            if display_vault():
+            print(' ')
+            if Credentials.find_vault(username, password):
               print('\n')
               for credentials in display_vault():
-                print(f'Site name: {credentials.site}')
-                print(f'Site username: {credentials.username}')
-                print(f'Site email: {credentials.email}')
-                print(f'Site password: {credentials.password}')
+                print(f' Site name: {credentials.site}')
+                print(f' Site username: {credentials.site_username}')
+                print(f' Site email: {credentials.site_email}')
+                print(f' Site password: {credentials.site_password}')
                 print('\n')
                 
             else:
@@ -158,7 +159,12 @@ def main():
               print('\nProcess cancelled')
             else:
               print('\nNo option specified')
-            
+              
+          else:
+            print('\nNo option specified please try again')
+           
+      else:    
+        print("\n You do not have an account with us please create one \n") 
       
     elif short_code == 'x':
       print('Thank you for choosing Ficha Password Manager! See you later!')

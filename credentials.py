@@ -8,13 +8,13 @@ class Credentials:
   credentials = []
   '''initialize the credentials array'''
   
-  def __init__(self, site, username, email, password):
+  def __init__(self, site, site_username, site_email, site_password):
     '''init method that defines properties for a new credentials object'''
     
     self.site = site
-    self.username = username
-    self.email = email
-    self.password = password
+    self.site_username = site_username
+    self.site_email = site_email
+    self.site_password = site_password
     '''arguments for the credentials object'''
 
         
@@ -35,4 +35,14 @@ class Credentials:
     '''class method to display all credentials in the vault'''
 
     return cls.credentials
+  
+  @classmethod  
+  def find_vault(cls, username, password):
+    '''class method to display all credentials in the vault'''
+    find = ''
+    for user in User.users:
+      if user.username == username and user.password == password:
+        find = user.username
+    return find
+  
   
