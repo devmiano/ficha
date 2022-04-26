@@ -37,6 +37,7 @@ To run the tests for the class files:
 - Python
 - Maskpass
 - Random
+- Pyperclip
 
 ## License
 
