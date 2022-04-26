@@ -33,7 +33,6 @@ class Credentials:
   @classmethod  
   def vault(cls):
     '''class method to display all credentials in the vault'''
-    
+
     return cls.credentials
   
-      

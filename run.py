@@ -36,7 +36,6 @@ def save_credentials(credentials):
 
 def display_vault():
   '''function that displays all credentials from the vault method'''
-  
   return Credentials.vault()
 
 
@@ -90,7 +89,7 @@ def main():
       if username == username:
         print('\nLogin successful!')
         
-        print(f'Welcome {fname} {lname}')
+        print(f'Welcome {fname} {lname} to Ficha Password Manager')
         
         while True:
           print('\n')
@@ -135,14 +134,15 @@ def main():
             print(f'Successfully created new credentials \n Site name: {site}\n Username: {username} \n Email: {email} \n Password: {password}')
             
           elif short_code == 'd':
-            print('\n')
-            if Credentials.vault():
-              print('Credentials')
-              for credential in Credentials.vault():
-                print(f'\nSite name: {credential.site}')
-                print(f'Site username: {credential.username}')
-                print(f'Site email: {credential.email}')
-                print(f'Site password: {credential.password}')
+            print(f'Vault for {username}')
+            if display_vault():
+              print('\n')
+              for credentials in display_vault():
+                print(f'Site name: {credentials.site}')
+                print(f'Site username: {credentials.username}')
+                print(f'Site email: {credentials.email}')
+                print(f'Site password: {credentials.password}')
+                print('\n')
                 
             else:
               print(f'\nNo credentials found. Please try creating new credentials first')
@@ -152,12 +152,12 @@ def main():
             short_code = input("Enter option: ").lower()
             
             if short_code == 'y':
-                print('Logged out successfully')
+                print('\nLogged out successfully')
                 break
             elif short_code == 'n':
-              print('Process cancelled')
+              print('\nProcess cancelled')
             else:
-              print('No option specified')
+              print('\nNo option specified')
             
       
     elif short_code == 'x':

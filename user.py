@@ -34,7 +34,8 @@ class User:
     '''class method to retrieve a user in the users array for sign in'''
     for user in cls.users:
       if user.username == username and user.password == password:
-        return True
+        current_user = user.username
+        return current_user
       
   
   

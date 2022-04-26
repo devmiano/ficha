@@ -11,10 +11,10 @@ class TestCredentials(unittest.TestCase):
   def __init__(self):
     '''method to test that the object is initialized'''
     
-    self.assertEqual(self.new_credentials.site, 'fb')
-    self.assertEqual(self.new_credentials.username, 'annabelkarish')
-    self.assertEqual(self.new_credentials.email, 'annabel@karish.com')
-    self.assertEqual(self.new_credentials.password, 'annabel')
+    self.assertEqual(self.new_credentials.site_site, 'fb')
+    self.assertEqual(self.new_credentials.site_username, 'annabelkarish')
+    self.assertEqual(self.new_credentials.site_email, 'annabel@karish.com')
+    self.assertEqual(self.new_credentials.site_password, 'annabel')
     
     
   def tearDown(self):
